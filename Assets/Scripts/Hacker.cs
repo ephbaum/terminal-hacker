@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     private void Start ()
     {
-        ShowMainMenu("Hello Ben");
-    }
-
-    // Update is called once per frame
-    private void Update ()
-    {
-        
+        ShowMainMenu();
     }
 
     private void OnUserInput (string input)
@@ -44,12 +38,9 @@ public class Hacker : MonoBehaviour
         }
     }
 
-    private void ShowMainMenu (string greeting)
+    private void ShowMainMenu ()
     {
         Terminal.ClearScreen();
-
-        Terminal.WriteLine(greeting);
-
         Terminal.WriteLine("Welcome to the WM2000 Learning Terminal");
         Terminal.WriteLine("");
         Terminal.WriteLine("Select school system to hack:");
