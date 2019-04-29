@@ -7,7 +7,7 @@ public class Hacker : MonoBehaviour
     // Start is called before the first frame update
     private void Start ()
     {
-        ShowMainMenu();
+        ShowMainMenu("Hello Ben");
     }
 
     // Update is called once per frame
@@ -16,14 +16,13 @@ public class Hacker : MonoBehaviour
         
     }
 
-    private void ShowMainMenu ()
+    private void ShowMainMenu (string greeting)
     {
         Terminal.ClearScreen();
 
-        string greeting = "Hello Ben";
         Terminal.WriteLine(greeting);
 
-        Terminal.WriteLine("Welcome to WM2000 Learning Terminal");
+        Terminal.WriteLine("Welcome to the WM2000 Learning Terminal");
         Terminal.WriteLine("");
         Terminal.WriteLine("Select school system to hack:");
         Terminal.WriteLine("Enter 1 for Elementary School");
