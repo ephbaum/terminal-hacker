@@ -18,7 +18,7 @@ public class Hacker : MonoBehaviour
 
     private void OnUserInput (string input)
     {
-        print("User typed: " + input);
+        print(input == "1");
     }
 
     private void ShowMainMenu (string greeting)
