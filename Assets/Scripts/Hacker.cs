@@ -18,7 +18,30 @@ public class Hacker : MonoBehaviour
 
     private void OnUserInput (string input)
     {
-        print(input == "1");
+        switch (input.ToUpper())
+        {
+            case "MENU":
+                ShowMainMenu("Good to see you again");
+                break;
+            case "1":
+                Terminal.WriteLine("You've chosen Elementary School");
+                break;
+            case "2":
+                Terminal.WriteLine("You've chosen Middle School");
+                break;
+            case "3":
+                Terminal.WriteLine("You've chosen High School");
+                break;
+            case "007":
+                Terminal.WriteLine("Welcome Mr. Bond, please choose a level");
+                break;
+            case "GOD":
+                Terminal.WriteLine("God Mode Active");
+                break;
+            default:
+                Terminal.WriteLine("Invalid Input");
+                break;
+        }
     }
 
     private void ShowMainMenu (string greeting)
