@@ -16,6 +16,11 @@ public class Hacker : MonoBehaviour
         
     }
 
+    private void OnUserInput (string input)
+    {
+        print("User typed: " + input);
+    }
+
     private void ShowMainMenu (string greeting)
     {
         Terminal.ClearScreen();
