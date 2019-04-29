@@ -19,6 +19,10 @@ public class Hacker : MonoBehaviour
     private void ShowMainMenu ()
     {
         Terminal.ClearScreen();
+
+        string greeting = "Hello Ben";
+        Terminal.WriteLine(greeting);
+
         Terminal.WriteLine("Welcome to WM2000 Learning Terminal");
         Terminal.WriteLine("");
         Terminal.WriteLine("Select school system to hack:");
