@@ -7,7 +7,14 @@ public class Hacker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Terminal.WriteLine("Welcome to WM2000 Learning Terminal");
+        Terminal.WriteLine("");
+        Terminal.WriteLine("Select school system to hack:");
+        Terminal.WriteLine("Enter 1 for Elementary School");
+        Terminal.WriteLine("Enter 2 for Middle School");
+        Terminal.WriteLine("Enter 3 for High School");
+        Terminal.WriteLine("");
+        Terminal.WriteLine("Selection: ");
     }
 
     // Update is called once per frame
