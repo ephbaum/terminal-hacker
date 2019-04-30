@@ -65,7 +65,7 @@ public class Hacker : MonoBehaviour
         }
     }
 
-    private void RequestPassword()
+    private void RequestPassword ()
     {
         m_CurrentScreen = Screen.Password;
 
@@ -76,7 +76,7 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine(m_Password);
     }
 
-    private void SetRandomPassword()
+    private void SetRandomPassword ()
     {
         System.Random rnd = new System.Random();
         int index;
@@ -97,6 +97,7 @@ public class Hacker : MonoBehaviour
                 break;
             default:
                 m_Password = null;
+                Debug.LogError("SetRandomPassword m_Level invalid state: " + m_Level);
                 break;
         }
     }
@@ -113,7 +114,7 @@ public class Hacker : MonoBehaviour
         }
     }
 
-    private void DisplayWinScreen()
+    private void DisplayWinScreen ()
     {
         m_CurrentScreen = Screen.Win;
 
@@ -122,7 +123,7 @@ public class Hacker : MonoBehaviour
         GenerateWinScreenContent();
     }
 
-    private void GenerateWinScreenContent()
+    private void GenerateWinScreenContent ()
     {
         string reward = "      _,                _.\n     (  `)            (`  ).\n  .=( ` ,_ `)    .-``(      ).\n (.__.:-`-_.'   (.,,(.       '`.\n                      `--`--`'`\n         ____.........__H_\n      __/%%%%|%%%%%%%|%%%%\\\n _ ()/%%|:II:|II:::II|:II:|_ _ _\n|-(()|--|:II:|II:H:II|:II:|-|-|-|\n`'.'\"^  ^` \"^ \"^|\"|^'\"' `^`-.^~'";
 
@@ -136,6 +137,10 @@ public class Hacker : MonoBehaviour
                 break;
             case 3:
                 reward += "\n\nYou are a smart cookie!";
+                break;
+            default:
+                reward = "Game broken, sorry.";
+                Debug.LogError("GenerateWarningScreenContent invalid m_Level state: " + m_Level);
                 break;
         }
         Terminal.WriteLine(reward);
@@ -153,7 +158,7 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine("Enter 1 for Elementary School");
         Terminal.WriteLine("Enter 2 for Middle School");
         Terminal.WriteLine("Enter 3 for High School");
-        Terminal.WriteLine("");
+        Terminal.WriteLine("Type menu any time to start over.");
         Terminal.WriteLine("Selection: ");
     }
 }
