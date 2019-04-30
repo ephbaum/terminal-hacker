@@ -13,9 +13,9 @@ public class Hacker : MonoBehaviour
     Screen m_CurrentScreen = Screen.MainMenu;
 
     // Level Word Arrays
-    readonly string[] m_ElementarySchoolWords = { "easy", "safe", "fast" };
-    readonly string[] m_MiddleSchoolWords = { "teach", "think", "brain" };
-    readonly string[] m_HighSchoolWords = { "random", "challenge", "difficult" };
+    readonly string[] m_ElementarySchoolWords = { "easy", "safe", "double", "study", "think" };
+    readonly string[] m_MiddleSchoolWords = { "challenge", "expected", "anagram", "instruct", "decision" };
+    readonly string[] m_HighSchoolWords = { "apparition", "capitulate", "necessitated", "indicitive", "parliamentarian" };
 
     private void Start ()
     {
