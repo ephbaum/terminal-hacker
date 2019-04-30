@@ -7,9 +7,15 @@ public class Hacker : MonoBehaviour
 {
     // Game State
     int m_Level;
+    string m_Password;
 
     enum Screen { MainMenu, Password, Win };
     Screen m_CurrentScreen = Screen.MainMenu;
+
+    // Level Word Arrays
+    readonly string[] m_ElementarySchoolWords = { "easy", "safe", "fast" };
+    readonly string[] m_MiddleSchoolWords = { "teach", "think", "brain" };
+    readonly string[] m_HighSchoolWords = { "random", "challenge", "difficult" };
 
     private void Start ()
     {
@@ -25,6 +31,14 @@ public class Hacker : MonoBehaviour
         else if (m_CurrentScreen == Screen.MainMenu)
         {
             RunMainMenu(input);
+        }
+        else if (m_CurrentScreen == Screen.Password)
+        {
+            CheckGuess(input);
+        }
+        else if (m_CurrentScreen == Screen.Win)
+        {
+            ShowMainMenu();
         }
     }
 
@@ -55,11 +69,53 @@ public class Hacker : MonoBehaviour
         m_CurrentScreen = Screen.Password;
         Terminal.WriteLine("You have chosen level " + m_Level);
         Terminal.WriteLine("Please enter your password: ");
+
+        System.Random rnd = new System.Random();
+        int index;
+
+        switch (m_Level)
+        {
+            case 1: // Elementary School Level
+                index = rnd.Next(1, m_ElementarySchoolWords.Length);
+                m_Password = m_ElementarySchoolWords[index];
+                break;
+            case 2: // Middle School Level
+                index = rnd.Next(1, m_MiddleSchoolWords.Length);
+                m_Password = m_MiddleSchoolWords[index];
+                break;
+            case 3: // High School Level
+                index = rnd.Next(1, m_HighSchoolWords.Length);
+                m_Password = m_HighSchoolWords[index];
+                break;
+            default:
+                m_Password = null;
+                break;
+        }
+        // @TODO Remove onscreen debugging
+        Terminal.WriteLine(m_Password);
+    }
+
+    private void CheckGuess(string guess)
+    {
+        if (guess.ToUpper() == m_Password.ToUpper())
+        {
+            // @TODO Win State
+            m_CurrentScreen = Screen.Win;
+            Terminal.WriteLine("Access Granted!");
+            Terminal.WriteLine("Win State Entered");
+        }
+        else
+        {
+            // @TODO Improve and remoe debugging
+            Terminal.WriteLine("Does not match " + m_Password);
+            Terminal.WriteLine("Incorrect, try again: ");
+        }
     }
 
     private void ShowMainMenu ()
     {
         m_Level = 0;
+        m_Password = null;
         m_CurrentScreen = Screen.MainMenu;
         Terminal.ClearScreen();
         Terminal.WriteLine("Welcome to the WM2000 Learning Terminal");
