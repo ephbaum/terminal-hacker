@@ -22,27 +22,31 @@ public class Hacker : MonoBehaviour
         {
             ShowMainMenu();
         }
-
-        if (m_CurrentScreen == Screen.MainMenu)
+        else if (m_CurrentScreen == Screen.MainMenu)
         {
-            switch (input.ToUpper())
-            {
-                case "1":
-                case "2":
-                case "3":
-                    m_Level = Int32.Parse(input);
-                    StartGame();
-                    break;
-                case "007":
-                    Terminal.WriteLine("Welcome Mr. Bond, please choose a level");
-                    break;
-                case "GOD":
-                    Terminal.WriteLine("God Mode Activated");
-                    break;
-                default:
-                    Terminal.WriteLine("Invalid Input");
-                    break;
-            }
+            RunMainMenu(input);
+        }
+    }
+
+    private void RunMainMenu (string input)
+    {
+        switch (input.ToUpper())
+        {
+            case "1":
+            case "2":
+            case "3":
+                m_Level = Int32.Parse(input);
+                StartGame();
+                break;
+            case "007":
+                Terminal.WriteLine("Welcome Mr. Bond, please choose a level");
+                break;
+            case "GOD":
+                Terminal.WriteLine("God Mode Activated");
+                break;
+            default:
+                Terminal.WriteLine("Invalid Input");
+                break;
         }
     }
 
