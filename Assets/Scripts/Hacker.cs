@@ -49,7 +49,7 @@ public class Hacker : MonoBehaviour
             case "1":
             case "2":
             case "3":
-                m_Level = Int32.Parse(input);
+                m_Level = int.Parse(input);
                 StartGame();
                 break;
             case "007":
