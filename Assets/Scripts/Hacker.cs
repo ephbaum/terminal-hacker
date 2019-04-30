@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Hacker : MonoBehaviour
 {
+    // Game State
+    int m_Level;
 
     private void Start ()
     {
@@ -15,22 +18,19 @@ public class Hacker : MonoBehaviour
         switch (input.ToUpper())
         {
             case "MENU":
-                ShowMainMenu("Good to see you again");
+                ShowMainMenu();
                 break;
             case "1":
-                Terminal.WriteLine("You've chosen Elementary School");
-                break;
             case "2":
-                Terminal.WriteLine("You've chosen Middle School");
-                break;
             case "3":
-                Terminal.WriteLine("You've chosen High School");
+                m_Level = Int32.Parse(input);
+                StartGame();
                 break;
             case "007":
                 Terminal.WriteLine("Welcome Mr. Bond, please choose a level");
                 break;
             case "GOD":
-                Terminal.WriteLine("God Mode Active");
+                Terminal.WriteLine("God Mode Activated");
                 break;
             default:
                 Terminal.WriteLine("Invalid Input");
@@ -38,8 +38,14 @@ public class Hacker : MonoBehaviour
         }
     }
 
+    private void StartGame()
+    {
+        Terminal.WriteLine("You have chosen level " + m_Level);
+    }
+
     private void ShowMainMenu ()
     {
+        m_Level = 0;
         Terminal.ClearScreen();
         Terminal.WriteLine("Welcome to the WM2000 Learning Terminal");
         Terminal.WriteLine("");
