@@ -67,7 +67,7 @@ public class Hacker : MonoBehaviour
     private void StartGame()
     {
         m_CurrentScreen = Screen.Password;
-        Terminal.WriteLine("You have chosen level " + m_Level);
+        Terminal.ClearScreen();
         Terminal.WriteLine("Please enter your password: ");
 
         System.Random rnd = new System.Random();
