@@ -50,7 +50,8 @@ public class Hacker : MonoBehaviour
             case "2":
             case "3":
                 m_Level = int.Parse(input);
-                StartGame();
+                SetRandomPassword();
+                RequestPassword();
                 break;
             case "007":
                 Terminal.WriteLine("Welcome Mr. Bond, please choose a level");
@@ -64,12 +65,19 @@ public class Hacker : MonoBehaviour
         }
     }
 
-    private void StartGame()
+    private void RequestPassword()
     {
         m_CurrentScreen = Screen.Password;
-        Terminal.ClearScreen();
-        Terminal.WriteLine("Please enter your password: ");
 
+        Terminal.ClearScreen();
+        Terminal.WriteLine("Enter password, hint: " + m_Password.Anagram());
+
+        // @TODO Remove onscreen debugging
+        Terminal.WriteLine(m_Password);
+    }
+
+    private void SetRandomPassword()
+    {
         System.Random rnd = new System.Random();
         int index;
 
@@ -91,8 +99,6 @@ public class Hacker : MonoBehaviour
                 m_Password = null;
                 break;
         }
-        // @TODO Remove onscreen debugging
-        Terminal.WriteLine(m_Password);
     }
 
     private void CheckGuess(string guess)
@@ -103,9 +109,7 @@ public class Hacker : MonoBehaviour
         }
         else
         {
-            // @TODO Improve and remoe debugging
-            Terminal.WriteLine("Does not match " + m_Password);
-            Terminal.WriteLine("Incorrect, try again: ");
+            RequestPassword();
         }
     }
 
@@ -128,7 +132,7 @@ public class Hacker : MonoBehaviour
                 reward += "\n\nTry Middle School for more challenge!";
                 break;
             case 2:
-                reward += "\n\nTry High School for a greater challenge!";
+                reward += "\n\nTry High School for more challenge!";
                 break;
             case 3:
                 reward += "\n\nYou are a smart cookie!";
