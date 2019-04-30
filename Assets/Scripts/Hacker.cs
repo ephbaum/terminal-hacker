@@ -99,10 +99,7 @@ public class Hacker : MonoBehaviour
     {
         if (guess.ToUpper() == m_Password.ToUpper())
         {
-            // @TODO Win State
-            m_CurrentScreen = Screen.Win;
-            Terminal.WriteLine("Access Granted!");
-            Terminal.WriteLine("Win State Entered");
+            DisplayWinScreen();
         }
         else
         {
@@ -110,6 +107,34 @@ public class Hacker : MonoBehaviour
             Terminal.WriteLine("Does not match " + m_Password);
             Terminal.WriteLine("Incorrect, try again: ");
         }
+    }
+
+    private void DisplayWinScreen()
+    {
+        m_CurrentScreen = Screen.Win;
+
+        Terminal.ClearScreen();
+        Terminal.WriteLine("Access Granted!");
+        GenerateWinScreenContent();
+    }
+
+    private void GenerateWinScreenContent()
+    {
+        string reward = "      _,                _.\n     (  `)            (`  ).\n  .=( ` ,_ `)    .-``(      ).\n (.__.:-`-_.'   (.,,(.       '`.\n                      `--`--`'`\n         ____.........__H_\n      __/%%%%|%%%%%%%|%%%%\\\n _ ()/%%|:II:|II:::II|:II:|_ _ _\n|-(()|--|:II:|II:H:II|:II:|-|-|-|\n`'.'\"^  ^` \"^ \"^|\"|^'\"' `^`-.^~'";
+
+        switch (m_Level)
+        {
+            case 1:
+                reward += "\n\nTry Middle School for more challenge!";
+                break;
+            case 2:
+                reward += "\n\nTry High School for a greater challenge!";
+                break;
+            case 3:
+                reward += "\n\nYou are a smart cookie!";
+                break;
+        }
+        Terminal.WriteLine(reward);
     }
 
     private void ShowMainMenu ()
