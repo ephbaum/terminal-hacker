@@ -53,6 +53,11 @@ public class Hacker : MonoBehaviour
                 SetRandomPassword();
                 RequestPassword();
                 break;
+            case "CLOSE":
+            case "EXIT":
+            case "QUIT":
+                QuitGame();
+                break;
             case "007":
                 Terminal.WriteLine("Welcome Mr. Bond, please choose a level");
                 break;
@@ -63,6 +68,13 @@ public class Hacker : MonoBehaviour
                 Terminal.WriteLine("Invalid Input");
                 break;
         }
+    }
+
+    private void QuitGame ()
+    {
+        Terminal.ClearScreen();
+        Terminal.WriteLine("Close tab / window to quit on the web");
+        Application.Quit();
     }
 
     private void RequestPassword ()
