@@ -71,9 +71,6 @@ public class Hacker : MonoBehaviour
 
         Terminal.ClearScreen();
         Terminal.WriteLine("Enter password, hint: " + m_Password.Anagram());
-
-        // @TODO Remove onscreen debugging
-        Terminal.WriteLine(m_Password);
     }
 
     private void SetRandomPassword ()
